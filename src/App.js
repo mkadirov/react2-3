@@ -14,6 +14,7 @@ import getUserList from './data/Users';
 import Foods from './pages/Foods/Foods';
 import getFoodListData from './data/FoodListData';
 import HomePage from './pages/HomePage/HomePage';
+import Page404 from './pages/Page404/Page404';
 
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
 
           </Route>
            }
-           
+           <Route path='*' element = {<Page404/>}/>
         </Routes>
     </Router>
     </>
