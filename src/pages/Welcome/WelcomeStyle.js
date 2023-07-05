@@ -9,10 +9,10 @@ const WelcomeStyle = styled.div`
   aside {
     width: 24%;
     min-width: 300px;
-    
     min-height: 100vh;
     background-color: #f4edc6;
-
+    position: sticky;
+    top: 0;
     p {
         margin: 0;
     }
@@ -30,11 +30,16 @@ const WelcomeStyle = styled.div`
 
   .rightSide {
     flex: 1;
-    min-height: 100vh;
+    max-height: 100vh;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     header {
         flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        background-color: white;
+        z-index: 500;
         .menu-bar {
             cursor: pointer;
         }

@@ -20,7 +20,7 @@ export default function Category({categoryList, changeList}) {
 
 
   return (
-    <Add>
+    <>
         <div className="input-box">
             <div className="row">
                 <div className="col-9 text-center">
@@ -30,6 +30,6 @@ export default function Category({categoryList, changeList}) {
                 </div>
             </div>
         </div>
-    </Add>
+    </>
   )
 }

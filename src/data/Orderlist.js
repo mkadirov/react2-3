@@ -17,7 +17,7 @@ const orderList = [
     },
     {
         user: "samidullayev Bahodir",
-        foodName: "manti",
+        foodName: "Manti",
         price: 5000,
         quantity: 10,
         tel: +998978881023,
@@ -30,6 +30,22 @@ const orderList = [
         quantity: 3,
         tel: +998978886715,
         description: "Alohida paketlarda"
+    },
+    {
+        user: "Eshonov Bahodir",
+        foodName: "Iskandar Kabob",
+        price: 60000,
+        quantity: 2,
+        tel: +998978880000,
+        description: "Köproq qayla"
+    },
+    {
+        user: "Azim Qosimov",
+        foodName: "Pizza",
+        price: 24000,
+        quantity: 1,
+        tel: +998978889898,
+        description: "Kesilmasin"
     }
 
    

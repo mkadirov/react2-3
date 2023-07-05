@@ -3,7 +3,7 @@ const FoodListData = [
         imgUrl: 'https://tse3.mm.bing.net/th?id=OIP.jpIXN1o63xhfZMa5k75HsAAAAA&pid=Api&P=0&h=180',
         foodName: "Osh",
         description: "Qöy göshti, guruch, sabzi, piyoz, nöxot, ösimlik yog'i, ziravorlar",
-        price: 40000,
+        price: 20000,
         category: "Milliy Taomlar" 
     },
     {
@@ -17,7 +17,7 @@ const FoodListData = [
         imgUrl: 'https://tse1.mm.bing.net/th?id=OIP.vfFav8oY1mXzlXi5bn_bLgHaEu&pid=Api&P=0&h=180',
         foodName: "Big Lavash",
         description: "Un, tovuq göshti, pamidor, bodring, salat bargi, ziravorlar, ketchup, mayonez",
-        price: 30000,
+        price: 24000,
         category: "Fast Food" 
     },
     {
@@ -32,7 +32,7 @@ const FoodListData = [
         imgUrl: 'https://tse4.mm.bing.net/th?id=OIP.1nHXuRyoAoz-9koVY8oGUAAAAA&pid=Api&P=0&h=180',
         foodName: "Manti",
         description: "Qöy göshti, un, piyoz, ösimlik yog'i, ziravorlar",
-        price: 10000,
+        price: 5000,
         category: "Milliy Taomlar" 
     }
 ]

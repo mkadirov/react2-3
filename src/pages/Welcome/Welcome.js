@@ -1,21 +1,22 @@
 import React, {Children, useState} from 'react'
-import { Link, createRoutesFromChildren } from 'react-router-dom'
+import { Link, NavLink, Outlet, createRoutesFromChildren, useNavigate } from 'react-router-dom'
 import WelcomeStyle from './WelcomeStyle'
 import logo from '../../assets/image/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faChartColumn, faCheck, faPizzaSlice, faPlus, faSpinner, faUserCircle, faUserFriends } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faChartColumn, faCheck, faPizzaSlice, faPlus, faRightFromBracket, faSpinner, faUserCircle, faUserFriends } from '@fortawesome/free-solid-svg-icons'
+import Biglogo from '../Biglogo/Biglogo'
 
-export default function Welcome( {children} ) {
+export default function Welcome(props) {
   const [show, setShow] = useState(false);
   const [active, setActive] = useState(5);
-
+  const navigate = useNavigate()
  
   
 
   return (
     <WelcomeStyle>
       <aside className={`py-2 px-2 shadow ${show && "hide"}`}>
-         <Link to="/">
+         <Link to="/dashbord">
          <div className="row justify-content-center">
             <div className="col-9">
                <img src={logo} alt="" />
@@ -23,7 +24,8 @@ export default function Welcome( {children} ) {
           </div>
          </Link>
           <div className="list-box mt-5">
-            <Link to='/orders'> <div className={`link-item row mx-3 rounded ${active=== 0 ? 'primeColor': ''}`} onClick={() => setActive(0)}>
+            <NavLink to='orders'> 
+            <div className= {`link-item row mx-3 rounded `}  onClick={() => setActive(0)}>
               <div className="col-2 d-flex justify-content-center align-items-center icon-box">
                 <FontAwesomeIcon icon={faSpinner}/>
               </div>
@@ -31,10 +33,10 @@ export default function Welcome( {children} ) {
                 <p className='fw-bolder'>Arizalar</p>
                 <span className='light-dark display-10'>Yetib kelgan arizalarni kuzatish mumkin</span>
               </div>
-            </div></Link>
+            </div></NavLink>
            
 
-           <Link to="/delivered">
+           <Link to="delivered">
            <div className={`link-item row mx-3 rounded `} onClick={() => setActive(1)}>
               <div className="col-2 d-flex justify-content-center align-items-center icon-box">
                 <FontAwesomeIcon icon={faCheck}/>
@@ -55,7 +57,7 @@ export default function Welcome( {children} ) {
               </div>
             </div>
 
-           <Link to="/add">
+           <Link to="add">
            <div className={`link-item row mx-3 rounded `} onClick={() => setActive(3)}>
               <div className="col-2 d-flex justify-content-center align-items-center icon-box">
                 <FontAwesomeIcon icon={faPlus}/>
@@ -67,7 +69,7 @@ export default function Welcome( {children} ) {
             </div></Link>
 
 
-            <Link to="/users">
+            <Link to="users">
             <div className={`link-item row mx-3 rounded `} onClick={() => setActive(4)}>
               <div className="col-2 d-flex justify-content-center align-items-center icon-box">
                 <FontAwesomeIcon icon={faUserFriends}/>
@@ -78,7 +80,7 @@ export default function Welcome( {children} ) {
               </div>
             </div></Link>
 
-            <Link to="/foods">
+            <Link to="foods">
             <div className={`link-item row mx-3 rounded`} onClick={() => setActive(5)}>
               <div className="col-2 d-flex justify-content-center align-items-center icon-box">
                 <FontAwesomeIcon icon={faPizzaSlice}/>
@@ -101,10 +103,18 @@ export default function Welcome( {children} ) {
                 <div className="user-box d-flex align-items-center gap-2">
                   <FontAwesomeIcon icon={faUserCircle}/>
                   <p className='m-0'>Axror</p>
+                  <button className="btn btn-warning" onClick={() => {
+                    props.setLogin(false)
+                    navigate("/")
+                  }}>
+                  <FontAwesomeIcon icon={faRightFromBracket} />
+                  </button>
                 </div>
               </div>
             </header>
-            <main>{children}</main>
+            <main>
+              <Outlet/>
+            </main>
         </div>
     </WelcomeStyle>
   )

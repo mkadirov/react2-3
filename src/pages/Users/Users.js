@@ -32,7 +32,7 @@ export default function Users({users, setUsers}) {
 
 
   return (
-    <Welcome>
+    <>
         <div className="container">
             <h2 className="pt-5">
                Foydalanuvchilar
@@ -85,7 +85,7 @@ export default function Users({users, setUsers}) {
         onHide={() => setModalShow(false)}
       />
     
-    </Welcome>
+    </>
   )
 
   function MyVerticallyCenteredModal(props) {

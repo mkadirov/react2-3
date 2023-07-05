@@ -7,7 +7,7 @@ export default function Deliverd() {
   const list = getOrderList();
   let sum=0;
   return (
-    <Welcome>
+    <>
         
         <div className="container">
             <h2 className="pt-5">
@@ -54,6 +54,6 @@ export default function Deliverd() {
             </div>
         </div>
     
-    </Welcome>
+    </>
   )
 }

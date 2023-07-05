@@ -38,7 +38,7 @@ export default function Food({categoryList, foodList, setFoodList}) {
         input5Ref.current.value = '';
     }
   return (
-   <Add>
+   <>
      <FoodStyle>
      <form className="form-container" onSubmit={addFood}>
        <div className="row">
@@ -57,7 +57,7 @@ export default function Food({categoryList, foodList, setFoodList}) {
                 <input type="text" className="form-control border-dark" placeholder="Narxi" ref={input4Ref}/>
             </div>
             <div className="col-lg-6 col-md-12 mb-4">
-            <select class="form-select border-dark" aria-label="Default select example" ref={input5Ref}>
+            <select className="form-select border-dark" aria-label="Default select example" ref={input5Ref}>
                <option selected>Open this select menu</option>
 
                {
@@ -76,6 +76,6 @@ export default function Food({categoryList, foodList, setFoodList}) {
        </div>
      </form>
      </FoodStyle>
-   </Add>
+   </>
   )
 }

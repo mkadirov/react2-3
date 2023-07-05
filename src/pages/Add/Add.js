@@ -1,27 +1,33 @@
 import React, { useState } from 'react'
 import AddStyle from './AddStyle'
 import Welcome from '../Welcome/Welcome'
-import { Link } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 
-export default function Add({children}) {
+export default function Add() {
     const [active, setActive] = useState(0)
   return (
-   <Welcome>
+   <>
      <AddStyle>
        <div className="container pt-5">
          <header>
             <h2 className="fw-bold">Qo'shish</h2>
             <p className="light-dark">Yangi kategoriya/taom qo'shish</p>
             <div className="btn-box mt-5">
-            <Link to="/add/category">
-            <button className='btn fw-bold me-2 btn-prime shadow'  onClick={()=> setActive(0)}>Kategoriya</button></Link>
-            <Link to="/add/food">
-            <button className='btn fw-bold me-2 btn-prime shadow'  onClick={()=> setActive(1)}>Taom</button></Link>
+            <NavLink to="category" style={({isActive}) => isActive? {backgroundColor: "#FFEC00"} : {}} 
+            className='btn fw-bold me-2 shadow px-5'  onClick={()=> setActive(0)}>
+            Kategoriya
+            </NavLink>
+            <NavLink to="food" style={({isActive}) => isActive? {backgroundColor: "#FFEC00"} : {}} 
+            className='btn fw-bold me-2 px-5  shadow'  onClick={()=> setActive(1)}>
+            Taom
+            </NavLink>
             </div>
          </header>
-         <main className='mt-5'>{children}</main>
+         <main className='mt-5'>
+            <Outlet/>
+         </main>
        </div>
     </AddStyle>
-   </Welcome>
+   </>
   )
 }
