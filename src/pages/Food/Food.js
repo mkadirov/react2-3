@@ -1,9 +1,11 @@
 import React, { useRef } from 'react'
-import Add from '../Add/Add'
 import FoodStyle from './FoodStyle'
+import {useSelector } from 'react-redux'
+import { dispatch } from '../../redux/store';
 
-export default function Food({categoryList, foodList, setFoodList}) {
-    
+
+export default function Food() {
+    const state = useSelector(state => state)
     const input1Ref = useRef(null);
     const input2Ref = useRef(null);
     const input3Ref = useRef(null);
@@ -26,8 +28,7 @@ export default function Food({categoryList, foodList, setFoodList}) {
             category: category 
         }
         
-
-        setFoodList([...foodList, food])
+        dispatch({type: "ADD_NEW_FOOD", payload: food} )
 
         alert(foodName + "- tamnomaga qöshildi!")
 
@@ -61,7 +62,7 @@ export default function Food({categoryList, foodList, setFoodList}) {
                <option selected>Open this select menu</option>
 
                {
-                categoryList.map((item)=> {
+                state.categoryList?.map((item)=> {
                     return(
                         <option value={item}>{item}</option>
                     )

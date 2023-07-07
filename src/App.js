@@ -1,5 +1,6 @@
 
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom'
+import { Provider, useSelector } from 'react-redux'
 import Welcome from './pages/Welcome/Welcome';
 import Orders from './pages/Orders/Orders';
 import GlobalStyle from './Style/GlobalStyle';
@@ -10,28 +11,22 @@ import Food from './pages/Food/Food';
 import { useState } from 'react';
 import Deliverd from './pages/Delivered/Delivered';
 import Users from './pages/Users/Users';
-import getUserList from './data/Users';
 import Foods from './pages/Foods/Foods';
-import getFoodListData from './data/FoodListData';
 import HomePage from './pages/HomePage/HomePage';
 import Page404 from './pages/Page404/Page404';
+import store from './redux/store';
+
+
 
 
 function App() {
-  const  foodListdata = getFoodListData();
-  const list = getUserList();
-  const [categoryList, setCategoryList] = useState(["Milliy Taomlar", "Turk taomlari"])
-  const [foodList, setFoodList] = useState(foodListdata);
-  const [users, setUsers] = useState(list);
+  
   const [isLogin, setLogin] = useState(false)
-
-  function changeList(v) {
-    setCategoryList([...categoryList, v])
-  }
-
   return (
     
     <>
+    <Provider store={store} >
+      
     <GlobalStyle/>
     <Router>
         <Routes>
@@ -42,20 +37,19 @@ function App() {
             <Route path='delivered' element= {<Deliverd/>}/>
 
             <Route path='add' element={<Add/>}>
-              <Route path='category' element= {<Category 
-                               categoryList= {categoryList} changeList = {changeList} />}/>
-              <Route path='food' element= {<Food categoryList={categoryList} 
-                               foodList= {foodList} setFoodList= {setFoodList}/>}/>
+              <Route path='category' element= {<Category/>}/>
+              <Route path='food' element= {<Food/>}/>
             </Route>
          
-            <Route path='users' element= {<Users users = {users} setUsers = {setUsers}/>}/>
-            <Route path='foods' element= {<Foods foodList = {foodList}/>}/>
+            <Route path='users' element= {<Users/>}/>
+            <Route path='foods' element= {<Foods/>}/>
 
           </Route>
            }
            <Route path='*' element = {<Page404/>}/>
         </Routes>
     </Router>
+    </Provider>
     </>
   );
 }

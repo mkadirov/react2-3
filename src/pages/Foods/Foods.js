@@ -1,11 +1,11 @@
 import React from 'react'
-import Welcome from '../Welcome/Welcome'
 import FoodsStyle from './FoodsStyle'
 import { useSearchParams } from 'react-router-dom'
+import {useSelector } from 'react-redux'
 
-export default function Foods({foodList}) {
+export default function Foods() {
  const [searchParams, setSearchParams] = useSearchParams();
- console.log(searchParams.get('filter'));
+ const state = useSelector(state => state);
 
 
   return (
@@ -33,7 +33,7 @@ export default function Foods({foodList}) {
                     
                         
                         {
-                        foodList.filter((item) => {
+                        state.foodList.filter((item) => {
                             const filter = searchParams.get('filter')
                             if(!filter) return true
                             else return item.foodName.toLowerCase().includes(filter)

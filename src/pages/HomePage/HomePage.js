@@ -2,6 +2,7 @@ import React from 'react'
 import logo from "../../assets/image/logo.png"
 import HomeStyle from './HomeStyle'
 import { Link, useNavigate } from 'react-router-dom'
+import { dispatch } from '../../redux/store';
 
 
 

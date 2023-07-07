@@ -1,33 +1,35 @@
 import React, {useState, useRef} from 'react'
-import Welcome from '../Welcome/Welcome'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faTrash} from '@fortawesome/free-solid-svg-icons'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import { dispatch } from '../../redux/store';
+import {useSelector } from 'react-redux'
 
-export default function Users({users, setUsers}) {
+
+
+export default function Users() {
     const [modalShow, setModalShow] = useState(false);
-    const [currentUser, setCurrentUser] = useState({})
+    const [currentUser, setCurrentUser] = useState(-1)
     const inputRef = useRef(null)
+    const state = useSelector(state => state);
 
-    function deleteUser(user) {
-        const newUsers = users.filter(item => item !== user);
-        setUsers(newUsers);
+    function deleteUser(index) {
+       dispatch({type: 'DELETE_USER', payload: index})
     }
 
     function editUser(e) {
         e.preventDefault();
 
         const newRoll = inputRef.current.value
-        users.map(user => {
-            if(user === currentUser){
-                user.roll = newRoll;
-            }
-            return user;
-        })
+        const payload = {
+          index: currentUser,
+          roll: newRoll
+        }
+
         setModalShow(false)
-        setUsers(users);
+        dispatch({type: "EDIT_USER", payload: payload})
     }
 
 
@@ -49,7 +51,7 @@ export default function Users({users, setUsers}) {
               </thead>
               <tbody>
                 {
-                  users.map((item, index)=> {
+                  state.userList.map((item, index)=> {
                     
                     return(
                       <tr key={index}>
@@ -61,9 +63,9 @@ export default function Users({users, setUsers}) {
                             
                             <Button variant="warning me-2" onClick={() =>
                                  setModalShow(true)}>
-                            <FontAwesomeIcon icon={faPen} onClick={()=> setCurrentUser(item)}/>
+                            <FontAwesomeIcon icon={faPen} onClick={()=> setCurrentUser(index)}/>
                             </Button>
-                            <button className="btn btn-danger" onClick={()=> deleteUser(item)}>
+                            <button className="btn btn-danger" onClick={()=> deleteUser(index)}>
                             <FontAwesomeIcon icon={faTrash}/>
                             </button>
                         </td>
@@ -76,7 +78,7 @@ export default function Users({users, setUsers}) {
 
             <div className="sum-box d-flex justify-content-between pe-5">
               <p className="fw-bold">Jami</p>
-              <p className="fw-bold me-5">{users.length} ta foydalanuvchi</p>
+              <p className="fw-bold me-5">{state.userList.length} ta foydalanuvchi</p>
             </div>
         </div>
 

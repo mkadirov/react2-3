@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
-import Add from '../Add/Add'
+import { dispatch } from '../../redux/store';
 
-export default function Category({categoryList, changeList}) {
+
+export default function Category() {
   const [inputText, setInputText] = useState('')
 
   function changeInputText(event) {
     setInputText(event.target.value);
   }
 
-  function changeState() {
+  function addCategory() {
     if(inputText.trim() !== ""){
-      changeList(inputText);
+      dispatch({type: 'ADD_NEW_CATEGORY', payload: inputText})
       setInputText('');
       alert(inputText + " kategoriyasi qo'shildi")
     }else{
@@ -26,7 +27,7 @@ export default function Category({categoryList, changeList}) {
                 <div className="col-9 text-center">
                 <input type="text" value={inputText}  className="form-control border-dark d-block" 
                         onChange={changeInputText} />
-                <button className="btn btn-prime px-5 mt-5" onClick={changeState}>Qo'shish</button>
+                <button className="btn btn-prime px-5 mt-5" onClick={addCategory}>Qo'shish</button>
                 </div>
             </div>
         </div>

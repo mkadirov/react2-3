@@ -37,6 +37,8 @@ const FoodListData = [
     }
 ]
 
+export const categoryList = ["Milliy taom", "Turk taomlari", "Shrinliklar"]
+
 const getFoodListData = () => FoodListData;
 
 export default getFoodListData;
