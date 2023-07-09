@@ -51,7 +51,7 @@ export default function Users() {
               </thead>
               <tbody>
                 {
-                  state.userList.map((item, index)=> {
+                  state.users.userList.map((item, index)=> {
                     
                     return(
                       <tr key={index}>
@@ -78,14 +78,14 @@ export default function Users() {
 
             <div className="sum-box d-flex justify-content-between pe-5">
               <p className="fw-bold">Jami</p>
-              <p className="fw-bold me-5">{state.userList.length} ta foydalanuvchi</p>
+              <p className="fw-bold me-5">{state.users.userList.length} ta foydalanuvchi</p>
             </div>
         </div>
 
         <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-      />
+        />
     
     </>
   )

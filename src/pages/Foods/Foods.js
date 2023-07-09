@@ -33,7 +33,7 @@ export default function Foods() {
                     
                         
                         {
-                        state.foodList.filter((item) => {
+                        state.food.foodList.filter((item) => {
                             const filter = searchParams.get('filter')
                             if(!filter) return true
                             else return item.foodName.toLowerCase().includes(filter)

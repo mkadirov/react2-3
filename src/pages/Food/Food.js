@@ -62,7 +62,7 @@ export default function Food() {
                <option selected>Open this select menu</option>
 
                {
-                state.categoryList?.map((item)=> {
+                state.category.categoryList?.map((item)=> {
                     return(
                         <option value={item}>{item}</option>
                     )

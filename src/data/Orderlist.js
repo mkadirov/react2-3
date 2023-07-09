@@ -16,7 +16,7 @@ const orderList = [
         description: "Alohida idishda"
     },
     {
-        user: "samidullayev Bahodir",
+        user: "Samidullayev Bahodir",
         foodName: "Manti",
         price: 5000,
         quantity: 10,
